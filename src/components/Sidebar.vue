@@ -2,8 +2,8 @@
   <div v-if="isSidebarOpen" class="sidebar" :data-expanded="isSidebarOpen">
     <div class="sidebar-header">Sidebar Header</div>
     <button class="menu-button" @click="toggleSidebar">Menu</button>
-    <transition name="sidebar-slide">
-      <div class="sidebar-menu" v-if="isSidebarOpen">
+    <!-- <transition name="sidebar-slide"> -->
+      <div class="sidebar-menu">
         <ul>
           <li @click="toggleDropdown('dropdown1')">
             Menu 1
@@ -21,7 +21,7 @@
           </li>
         </ul>
       </div>
-    </transition>
+    <!-- </transition> -->
   </div>
   <div class="menuBtn" @click="toggleSidebar" :data-expanded="isSidebarOpen">
     <img v-if="!isSidebarOpen" src="../assets/menu.svg" alt="img.." />
@@ -34,8 +34,14 @@ export default {
   data() {
     return {
       activeDropdown: "",
-      isSidebarOpen: true,
+      isSidebarOpen: window.innerWidth > 768,
     };
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize);
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     toggleDropdown(dropdown) {
@@ -47,6 +53,9 @@ export default {
     },
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
+    },
+    handleResize() {
+      this.isSidebarOpen = window.innerWidth > 768;
     },
   },
 };
