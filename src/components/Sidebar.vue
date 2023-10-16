@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar">
+    <div v-if="isSidebarOpen" class="sidebar" :data-expanded="isSidebarOpen">
         <div class="sidebar-header">
             Sidebar Header
         </div>
@@ -25,6 +25,10 @@
             </div>
         </transition>
     </div>
+    <div class="menuBtn" @click="toggleSidebar" :data-expanded = "isSidebarOpen">
+        <img v-if="!isSidebarOpen" src="../assets/menu.svg" alt="img.." />
+        <img v-else src="../assets/cross.svg" alt="crossimg.." class="crossBtn"/>
+    </div>
 </template>
 
 <script>
@@ -32,7 +36,7 @@ export default {
     data() {
         return {
             activeDropdown: '',
-            isSidebarOpen: true, // Set to true to keep the sidebar open initially
+            isSidebarOpen: true, 
         };
     },
     methods: {
@@ -110,14 +114,36 @@ export default {
     text-align: left;
 }
 
+.menuBtn{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+}
+
+.menuBtn[data-expanded=true] {
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.crossBtn{
+    width: 10px;
+    height: 12px;
+}
 @media (max-width: 768px) {
     .menu-button {
         display: block;
         /* Show the menu button on small screens */
     }
 
-    .sidebar {
-        width: 0;
+    .sidebar[data-expanded=false] {
+        display: none;
+    }
+    .sidebar[data-expanded=true]{
+        width: 100%;
     }
 
     .sidebar.open {
