@@ -4,13 +4,14 @@
             <Sidebar />
         </div>
         <div class="main-dashboard">
-            <HelloWorld />
+            <DashboardHome />
         </div>
     </div>
 </template>
 
 <script setup>
-import HelloWorld from './HelloWorld.vue';
+import DashboardHome from './DashboardHome.vue';
+
 import Sidebar from './Sidebar.vue';
 
 </script>

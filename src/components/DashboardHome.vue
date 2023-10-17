@@ -1,11 +1,4 @@
 <script setup>
-import { ref } from "vue";
-
-defineProps({
-  msg: String,
-});
-
-const count = ref(0);
 </script>
 
 <template>
@@ -89,27 +82,27 @@ const count = ref(0);
           </div>
         </div>
         <div class="row px-2 m-2 mb-3" style="box-shadow: rgba(58, 53, 65, 0.1) 0px 2px 10px 0px;">
-          <div class="col-md-3 mb-3">
+          <div class="col-md-3 mb-3 mt-3">
             <div class="card  h-100"
               style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; background-color: #16B1FF;">
               <h3 class="card-body "> 1</h3>
 
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-3 my-3 ">
             <div class="card  text-dark h-100"
               style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;background-color: #9155FD;">
               <h3 class="card-body">34%</h3>
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-3 my-3">
             <div class="card  h-100"
               style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; background-color: #56CA00;">
               <h3 class="card-body ">25K +</h3>
 
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+          <div class="col-md-3 my-3">
             <div class="card  h-100"
               style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; background-color: #FFB400;">
               <h3 class="card-body ">9k</h3>

@@ -1,12 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+
 import Layout from './components/Layout.vue';
-import NavBar from './components/NavBar.vue';
-import Sidebar from './components/Sidebar.vue'
 </script>
 
 <template>
-  <!-- <NavBar /> -->
   <Layout />
 </template>
 
