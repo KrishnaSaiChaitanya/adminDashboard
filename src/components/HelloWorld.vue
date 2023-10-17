@@ -9,11 +9,75 @@ const count = ref(0);
 </script>
 
 <template>
-  <div class="d-flex">
-    <div class=" sidebar-nav bg-dark" id="sidebar" style="width: 25%;">
-    </div>
-    <main class="mt-5 pt-3" style="width: 100%;">
+  <div>
+    <main class="pt-3">
+      <div class="container-fluid" style="height: 2.5rem;">
+
+      </div>
+
       <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Shortcuts</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-12 mb-3">
+            <div class="card  h-100">
+              <div class="card-body" style="height: 30px;">
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-4 mb-3">
+            <div class="card  h-100">
+              <div class="card-body" style="height: 30px;">
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-2 col-4  mb-3">
+            <div class="card  text-dark h-100">
+              <div class="card-body" style="height: 30px;">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-4 mb-3">
+            <div class="card  h-100">
+              <div class="card-body" style="height: 30px;">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-4 mb-3">
+            <div class="card  h-100">
+              <div class="card-body" style="height: 30px;">
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-2 col-4 mb-3">
+            <div class="card  h-100">
+              <div class="card-body" style="height: 30px;">
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-2 col-4 mb-3">
+            <div class="card  h-100">
+              <div class="card-body" style="height: 30px;">
+
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-12">
             <h4>Dashboard</h4>
@@ -21,26 +85,29 @@ const count = ref(0);
         </div>
         <div class="row">
           <div class="col-md-3 mb-3">
-            <div class="card  h-100">
-              <div class="card-body py-5" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"> Card 1</div>
+            <div class="card  h-100"
+              style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;">
+              <h3 class="card-body "> 1</h3>
 
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <div class="card  text-dark h-100">
-              <div class="card-body py-5">Card 2</div>
+            <div class="card  text-dark h-100"
+              style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;">
+              <h3 class="card-body">34%</h3>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card  h-100"
+              style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;">
+              <h3 class="card-body ">25K +</h3>
 
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <div class="card   h-100">
-              <div class="card-body py-5">Card 3</div>
-
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <div class="card  h-100">
-              <div class="card-body py-5">Card 4</div>
+            <div class="card  h-100"
+              style="box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;">
+              <h3 class="card-body ">9k</h3>
 
             </div>
           </div>
@@ -48,32 +115,47 @@ const count = ref(0);
         <div class="row">
           <div class="col-md-6 mb-3">
             <div class="card h-100">
-              <div class="card-header">
+              <div class="card-header" style="display: flex; justify-content: space-between;">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
                 Half width Card-1
+                <svg style="z-index: 11;width: 5px; color: black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 4 15">
+                  <path
+                    d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                </svg>
               </div>
               <div class="card-body">
-                <canvas class="chart" width="400" height="200"></canvas>
+
               </div>
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <div class="card h-100">
-              <div class="card-header">
+              <div class="card-header" style="display: flex; justify-content: space-between;">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                Half Width Card-2
+                Half width Card-2
+                <svg style="z-index: 11;width: 5px; color: black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 4 15">
+                  <path
+                    d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                </svg>
               </div>
               <div class="card-body">
-                <canvas class="chart" width="400" height="200"></canvas>
+
               </div>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 mb-3">
-            <div class="card">
-              <div class="card-header">
-                <span><i class="bi bi-table me-2"></i></span> Full Width Card
+            <div class="card" style="height: 600px;">
+              <div class="card-header" style="display: flex; justify-content: space-between;">
+                <span><i class=" bi bi-table me-2"></i></span> Full Width Card
+                <svg style="z-index: 11;width: 5px; color: black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 4 15">
+                  <path
+                    d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                </svg>
               </div>
               <div class="card-body">
                 <div class="table-responsive" style="height: 400px;">

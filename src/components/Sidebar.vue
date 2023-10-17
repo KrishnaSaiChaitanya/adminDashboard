@@ -1,54 +1,119 @@
 <template>
   <div v-if="isSidebarOpen" class="sidebar" :data-expanded="isSidebarOpen">
-    <div class="sidebar-header">Sidebar Header</div>
-    <button class="menu-button" @click="toggleSidebar">Menu</button>
-    <!-- <transition name="sidebar-slide"> -->
-      <div class="sidebar-menu">
+    <div class="sidebar-header">Logo</div>
+    <div class="sidebar-menu">
+      <div v-for="(section, index) in sidebarData" :key="index">
+        <p class="sidebar-section">{{ section.section }}</p>
         <ul>
-          <li @click="toggleDropdown('dropdown1')">
-            Menu 1
-            <ul v-show="activeDropdown === 'dropdown1'">
-              <li>Submenu 1</li>
-              <li>Submenu 2</li>
-            </ul>
-          </li>
-          <li @click="toggleDropdown('dropdown2')">
-            Menu 2
-            <ul v-show="activeDropdown === 'dropdown2'">
-              <li>Submenu 3</li>
-              <li>Submenu 4</li>
+          <li v-for="(menu, menuIndex) in section.menus" :key="menuIndex" @click="toggleDropdown(menu.id)"
+            :style="{ backgroundColor: menu.active && menu.id == menuIndex ? '#445' : 'no color' }">
+            <div style="display: flex; justify-content: space-between;">
+              <p style="marginBottom: 0.1rem">{{ menu.name }}</p>
+              <!-- Conditionally render the icon if submenus exist -->
+              <svg v-if="menu.submenus && menu.submenus.length > 0" :style="{
+                width: '16px',
+                marginLeft: '32px',
+                marginBottom: '0.1rem',
+                transform: menu.active ? 'rotate(180deg)' : 'rotate(0deg)'
+              }" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path :stroke="menu.active ? 'white' : 'currentColor'" stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2" d="m1 1 4 4 4-4" />
+              </svg>
+            </div>
+            <!-- Conditionally render submenus if they exist -->
+            <ul v-if="menu.submenus && menu.submenus.length > 0" v-show="menu.active">
+              <li v-for="(submenu, submenuIndex) in menu.submenus" :key="submenuIndex">
+                {{ submenu.name }}
+              </li>
             </ul>
           </li>
         </ul>
       </div>
-    <!-- </transition> -->
+    </div>
   </div>
   <div class="menuBtn" @click="toggleSidebar" :data-expanded="isSidebarOpen">
-    <img v-if="!isSidebarOpen" src="../assets/menu.svg" alt="img.." />
-    <img v-else src="../assets/cross.svg" alt="crossimg.." class="crossBtn" />
+    <svg v-if="!isSidebarOpen" aria-hidden="true" style="z-index: 11; width: 21px; color: black"
+      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M1 1h15M1 7h15M1 13h15" />
+    </svg>
+    <svg v-if="isSidebarOpen" style="z-index: 11; width: 18px; color: white" aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+    </svg>
   </div>
 </template>
+
 
 <script>
 export default {
   data() {
     return {
-      activeDropdown: "",
       isSidebarOpen: window.innerWidth > 768,
+      sidebarData: [
+        {
+          section: "Section 1",
+          menus: [
+            {
+              id: 'dropdown1',
+              name: "Menu 1",
+              active: false,
+              submenus: [
+                { name: "Submenu 1" },
+                { name: "Submenu 2" },
+              ],
+            },
+            {
+              id: 'dropdown2',
+              name: "Menu 2",
+              active: false,
+              submenus: [
+                { name: "Submenu 3" },
+                { name: "Submenu 4" },
+              ],
+            },
+          ],
+        },
+        {
+          section: "Section 2",
+          menus: [
+            {
+              id: 'dropdown3',
+              name: "Menu 1",
+              active: false,
+              submenus: [
+                { name: "Submenu 1" },
+                { name: "Submenu 2" },
+              ],
+            },
+          ],
+        },
+        {
+          section: "Section 3",
+          menus: [
+            {
+              id: 'dropdown4',
+              name: "Normal menu",
+              active: false,
+            },
+          ],
+        },
+      ],
     };
   },
   created() {
-    window.addEventListener('resize', this.handleResize);
+    window.addEventListener("resize", this.handleResize);
   },
   destroyed() {
-    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener("resize", this.handleResize);
   },
   methods: {
-    toggleDropdown(dropdown) {
-      if (this.activeDropdown === dropdown) {
-        this.activeDropdown = "";
-      } else {
-        this.activeDropdown = dropdown;
+    toggleDropdown(id) {
+      for (let section of this.sidebarData) {
+        for (let menu of section.menus) {
+          menu.active = menu.id === id && !menu.active;
+        }
       }
     },
     toggleSidebar() {
@@ -61,6 +126,9 @@ export default {
 };
 </script>
 
+
+
+
 <style scoped>
 .sidebar {
   width: 20%;
@@ -68,14 +136,23 @@ export default {
   color: #fff;
   height: 100%;
   position: fixed;
+  overflow-y: scroll;
   top: 0;
   left: 0;
+  z-index: 10;
   transition: 0.3s;
 }
 
 .sidebar-header {
   padding: 20px;
+  font-size: 20px;
+  font-weight: 700;
   text-align: center;
+}
+
+.sidebar-section {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .sidebar-menu ul {
@@ -84,22 +161,29 @@ export default {
   margin: 0;
 }
 
+.sidebar-menu {
+  padding: 8px;
+}
+
 .sidebar-menu ul li {
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 10px;
   padding: 10px;
-  border-bottom: 1px solid #555;
+  margin: 8px;
+  border: 1px solid #555;
   position: relative;
   user-select: none;
   transition: 0.2s;
 }
 
 .sidebar-menu ul li:hover {
-  background-color: #555;
+  background-color: rgb(92, 91, 91);
 }
 
 .sidebar-menu ul li ul {
   margin-top: 10px;
-  background-color: #444;
+  /* background-color: #555; */
   position: relative;
   top: -3px;
 }
@@ -109,8 +193,14 @@ export default {
   border-bottom: 1px solid #555;
 }
 
+.sidebar-menu ul li ul li:hover {
+  /* padding: 10px 20px; */
+  /* border-bottom: 1px solid #555; */
+  background-color: #444;
+}
+
 .menu-button {
-  display: none;
+  display: flex;
   /* Initially hidden on large screens */
   background-color: #555;
   color: #fff;
@@ -121,8 +211,6 @@ export default {
   text-align: left;
 }
 
-
-
 @media (max-width: 768px) {
   .menu-button {
     display: block;
@@ -132,12 +220,13 @@ export default {
   .sidebar[data-expanded="false"] {
     display: none;
   }
+
   .sidebar[data-expanded="true"] {
-    width: 100%;
+    width: 80%;
   }
 
   .sidebar.open {
-    width: 250px;
+    width: 20%;
   }
 
   .sidebar-slide-enter-active,
@@ -149,6 +238,7 @@ export default {
   .sidebar-slide-leave-to {
     transform: translateX(-250px);
   }
+
   .menuBtn[data-expanded="true"] {
     background-color: white;
     border-radius: 50%;
@@ -158,14 +248,28 @@ export default {
     justify-content: center;
     align-items: center;
   }
+
   .crossBtn {
     width: 10px;
     height: 12px;
   }
+
   .menuBtn {
-  position: absolute;
-  top: 3%;
-  left: 5%;
-}
+    position: absolute;
+    top: 3%;
+    left: 5%;
+  }
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
