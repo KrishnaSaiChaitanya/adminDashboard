@@ -5,12 +5,12 @@
       <div v-for="(section, index) in sidebarData" :key="index">
         <p class="sidebar-section">{{ section.section }}</p>
         <ul>
-          <li v-for="(menu, menuIndex) in section.menus" :key="menuIndex" @click="toggleDropdown(menu.id)"
+          <li v-for="(menu, menuIndex) in section.menus" :key="menuIndex"
             :style="{ backgroundColor: menu.active && menu.id == menuIndex ? '#445' : 'no color' }">
             <div style="display: flex; justify-content: space-between;">
               <p style="marginBottom: 0.1rem">{{ menu.name }}</p>
               <!-- Conditionally render the icon if submenus exist -->
-              <svg v-if="menu.submenus && menu.submenus.length > 0" :style="{
+              <svg v-if="menu.submenus && menu.submenus.length > 0" @click="toggleDropdown(menu.id)" :style="{
                 width: '16px',
                 marginLeft: '32px',
                 marginBottom: '0.1rem',
@@ -152,7 +152,9 @@ export default {
 
 .sidebar-section {
   font-size: 18px;
+  padding-left: 10px;
   font-weight: 500;
+
 }
 
 .sidebar-menu ul {
@@ -162,7 +164,7 @@ export default {
 }
 
 .sidebar-menu {
-  padding: 8px;
+  padding: 5px;
 }
 
 .sidebar-menu ul li {
@@ -170,7 +172,7 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   border-radius: 10px;
   padding: 10px;
-  margin: 8px;
+  margin: 4px;
   border: 1px solid #555;
   position: relative;
   user-select: none;
@@ -178,7 +180,7 @@ export default {
 }
 
 .sidebar-menu ul li:hover {
-  background-color: rgb(92, 91, 91);
+  background-color: rgb(113, 112, 112);
 }
 
 .sidebar-menu ul li ul {
@@ -189,7 +191,7 @@ export default {
 }
 
 .sidebar-menu ul li ul li {
-  padding: 10px 20px;
+  padding: 6px 12px;
   border-bottom: 1px solid #555;
 }
 
