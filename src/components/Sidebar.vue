@@ -9,7 +9,6 @@
             :style="{ backgroundColor: menu.active && menu.id == menuIndex ? '#445' : 'no color' }">
             <div style="display: flex; justify-content: space-between;">
               <p style="marginBottom: 0.1rem">{{ menu.name }}</p>
-              <!-- Conditionally render the icon if submenus exist -->
               <svg v-if="menu.submenus && menu.submenus.length > 0" @click="toggleDropdown(menu.id)" :style="{
                 width: '16px',
                 marginLeft: '32px',
@@ -20,7 +19,6 @@
                   stroke-width="2" d="m1 1 4 4 4-4" />
               </svg>
             </div>
-            <!-- Conditionally render submenus if they exist -->
             <ul v-if="menu.submenus && menu.submenus.length > 0" v-show="menu.active">
               <li v-for="(submenu, submenuIndex) in menu.submenus" :key="submenuIndex">
                 {{ submenu.name }}
@@ -37,7 +35,7 @@
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M1 1h15M1 7h15M1 13h15" />
     </svg>
-    <svg v-if="isSidebarOpen" style="z-index: 11; width: 18px; position: fixed; color: white" aria-hidden="true"
+    <svg v-if="isSidebarOpen" style="z-index: 11; width: 18px; color: white" aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
